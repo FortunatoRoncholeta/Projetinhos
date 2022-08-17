@@ -1,0 +1,22 @@
+/* FONTES DO PROJETO */
+/* Rampart One */
+/* Special Elite */
+/* Reenie Beanie */
+/* Rye */
+/* Pinyon Script */
+/* IM Fell English SC */
+/* Cinzel Decorative */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=IM+Fell+English+SC&family=Pinyon+Script&family=Rampart+One&family=Reenie+Beanie&family=Rye&family=Special+Elite&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    background:linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+    display: flex;
+}
+
