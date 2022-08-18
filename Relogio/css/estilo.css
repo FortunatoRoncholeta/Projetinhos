@@ -18,5 +18,14 @@ body{
     height: 100vh;
     background:linear-gradient(120deg, #f6d365 0%, #fda085 100%);
     display: flex;
+    justify-content: center;
+    align-items: center;
+   
 }
 
+.relogio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 2px rgb(0, 0, 0);
+}
