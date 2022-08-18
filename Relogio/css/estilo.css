@@ -14,18 +14,82 @@
     box-sizing: border-box;
 }
 
-body{
+body {
     height: 100vh;
-    background:linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+    background: linear-gradient(120deg, #ffe53bd8, #ff2525da);
+    
+}
+
+.relogio-principal{
     display: flex;
-    justify-content: center;
+    justify-content: center;    
     align-items: center;
+}
+
+
+.brasilia {  
+    margin-top: 20px;
+    height: 200px;
+    width: 550px;
+    background: transparent;
+    border-radius: 3px;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, .5);
+    display: grid;
+    grid-template-areas: 
+    'titulo calendario'
+    'titulo relogio';
+    
+    
+}
+
+
+#titulo{
+    grid-area:titulo;
+    font-size: 30pt;
+    display: flex;
+    align-items: center;
+
+    
    
 }
 
-.relogio{
+#calendario{
+    grid-area:calendario;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid 2px rgb(0, 0, 0);
+    color : #fff;
+    background: rgba(5, 5, 5, .9);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, .7);
+    border-radius: 7px;
+    letter-spacing: 3px;
+    
 }
+#calendario div{
+    background: rgba(5, 5, 5, 0.9);
+    border-radius: 7px;
+    letter-spacing: 3px;
+}
+
+#relogio{
+    grid-area:relogio;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+#relogio div{
+    color: #fff;
+    background: rgba(5, 5, 5, 0.9);
+    border-radius: 7px;
+    letter-spacing: 3px;
+}
+
+span {
+    font-weight: bolder;
+    font-size: 60px;
+}
+
+
+
