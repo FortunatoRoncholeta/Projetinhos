@@ -17,7 +17,7 @@
 body {
     height: 100vh;
     background: linear-gradient(120deg, #ffe53bd8, #ff2525da);
-    
+    background-attachment: fixed;
 }
 
 .relogio-principal{
@@ -27,7 +27,8 @@ body {
 }
 
 
-.brasilia {  
+
+.sao-paulo  {  
     margin-top: 20px;
     height: 200px;
     width: 550px;
@@ -43,15 +44,15 @@ body {
 }
 
 
-#titulo{
+#titulo-brasil {
     grid-area:titulo;
-    font-size: 30pt;
     display: flex;
-    align-items: center;
-
-    
-   
+    justify-content: center;
+    align-items: center; 
+    font-size: 38px;
+    padding: 2px;
 }
+
 
 #calendario{
     grid-area:calendario;
@@ -92,4 +93,87 @@ span {
 }
 
 
+
+/* Relogios mudiais */
+
+.relogio-mundi{
+   display: grid;
+   justify-content: space-around;
+   grid-template-areas: 
+   'grupo-1 grupo-2';
+   
+    
+    
+}
+
+#grupo-1{
+grid-area: grupo-1;
+}
+
+#grupo-2{
+grid-area: grupo-2;     
+}
+
+
+
+.pais {  
+    margin-top: 20px;
+    height: 150px;
+    width: 450px;
+    background: transparent;
+    border-radius: 3px;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, .5);
+    display: grid;
+    grid-template-areas: 
+    'titulo calendario'
+    'titulo relogio';
+    
+    
+}
+
+
+#titulo{
+    grid-area:titulo;
+    font-size: 25pt;
+    display: flex;
+    align-items: center; 
+}
+
+#calendario-pais{
+    grid-area:calendario;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color : #fff;
+    background: rgba(5, 5, 5, .9);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, .7);
+    border-radius: 7px;
+    letter-spacing: 3px;
+    
+}
+#calendario-pais div{
+    background: rgba(5, 5, 5, 0.9);
+    border-radius: 7px;
+    letter-spacing: 3px;
+}
+
+#relogio-pais{
+    grid-area:relogio;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+#relogio-pais div{
+    color: #fff;
+    background: rgba(5, 5, 5, 0.9);
+    border-radius: 7px;
+    letter-spacing: 3px;
+}
+
+span {
+    font-weight: bolder;
+    font-size: 60px;
+}
 
