@@ -102,6 +102,152 @@ const dataNY = setInterval(function time(){
 
 });
 
+
+//===========LONDRES  ===============
+const horasL = document.getElementById('horaL');
+const minutosL = document.getElementById('minutoL');
+const segundosL = document.getElementById('segundoL');
+const diasL =document.getElementById('diaL');
+const mesesL =document.getElementById('mesL');
+const anosL =document.getElementById('anoL');
+
+
+const relogioL = setInterval(function time(){
+    //pega a hora atual do sistema com a função getHours()
+    let relogio =new Date();
+    let hora = relogio.getUTCHours();
+    let minuto = relogio.getUTCMinutes();
+    let segundo = relogio.getUTCSeconds();
+   
+    // verifica se o valor do horário é menor que 10 e adiciona o 0 na frente
+    if (hora < 10)  hora = '0' + hora;
+    if (minuto < 10)  minuto = '0' + minuto;
+    if (segundo < 10)  segundo = '0' + segundo;
+    
+    // atualiza o valor do horário
+    horasL.textContent = hora;
+    minutosL.textContent = minuto;
+    segundosL.textContent = segundo;
+
+});
+
+
+const dataL = setInterval(function time(){
+    //pega a hora atual do sistema com a função getHours()
+    let calendario =new Date();
+    let dia = calendario.getUTCDate();
+    let mes = calendario.getUTCMonth()+1;
+    let ano = calendario.getUTCFullYear();
+    
+    if (dia < 10)  dia = '0' + dia ;
+    if (mes < 10)  mes = '0' + mes ;
+    if (ano < 10)  ano = '0' + ano;
+
+    // atualiza o valor do horário
+    diasL.textContent = dia + '/';
+    mesesL.textContent = mes + '/';
+    anosL.textContent = ano;
+
+});
+
+
+
+//===========PEQUIN  ===============
+const horasP = document.getElementById('horaP');
+const minutosP = document.getElementById('minutoP');
+const segundosP = document.getElementById('segundoP');
+const diasP =document.getElementById('diaP');
+const mesesP =document.getElementById('mesP');
+const anosP =document.getElementById('anoP');
+
+
+const relogioP = setInterval(function time(){
+    //pega a hora atual do sistema com a função getHours()
+    let relogio =new Date();
+    let hora = relogio.getUTCHours()-16;
+    let minuto = relogio.getUTCMinutes();
+    let segundo = relogio.getUTCSeconds();
+   
+    // verifica se o valor do horário é menor que 10 e adiciona o 0 na frente
+    if (hora < 10)  hora = '0' + hora;
+    if (minuto < 10)  minuto = '0' + minuto;
+    if (segundo < 10)  segundo = '0' + segundo;
+    
+    // atualiza o valor do horário
+    horasP.textContent = hora;
+    minutosP.textContent = minuto;
+    segundosP.textContent = segundo;
+
+});
+
+
+const dataP = setInterval(function time(){
+    //pega a hora atual do sistema com a função getHours()
+    let calendario =new Date();
+    let dia = calendario.getUTCDate()+1;
+    let mes = calendario.getUTCMonth()+1;
+    let ano = calendario.getUTCFullYear();
+    
+    if (dia < 10)  dia = '0' + dia ;
+    if (mes < 10)  mes = '0' + mes ;
+    if (ano < 10)  ano = '0' + ano;
+
+    // atualiza o valor do horário
+    diasP.textContent = dia + '/';
+    mesesP.textContent = mes + '/';
+    anosP.textContent = ano;
+
+});
+
+
+
+//===========PARIS  ===============
+const horasPA = document.getElementById('horaPA');
+const minutosPA = document.getElementById('minutoPA');
+const segundosPA = document.getElementById('segundoPA');
+const diasPA =document.getElementById('diaPA');
+const mesesPA =document.getElementById('mesPA');
+const anosAP =document.getElementById('anoPA');
+
+
+const relogioPA = setInterval(function time(){
+    //pega a hora atual do sistema com a função getHours()
+    let relogio =new Date();
+    let hora = relogio.getUTCHours()+2;
+    let minuto = relogio.getUTCMinutes();
+    let segundo = relogio.getUTCSeconds();
+   
+    // verifica se o valor do horário é menor que 10 e adiciona o 0 na frente
+    if (hora < 10)  hora = '0' + hora;
+    if (minuto < 10)  minuto = '0' + minuto;
+    if (segundo < 10)  segundo = '0' + segundo;
+    
+    // atualiza o valor do horário
+    horasPA.textContent = hora;
+    minutosPA.textContent = minuto;
+    segundosPA.textContent = segundo;
+
+});
+
+
+const dataPA = setInterval(function time(){
+    //pega a hora atual do sistema com a função getHours()
+    let calendario =new Date();
+    let dia = calendario.getUTCDate();
+    let mes = calendario.getUTCMonth()+1;
+    let ano = calendario.getUTCFullYear();
+    
+    if (dia < 10)  dia = '0' + dia ;
+    if (mes < 10)  mes = '0' + mes ;
+    if (ano < 10)  ano = '0' + ano;
+
+    // atualiza o valor do horário
+    diasPA.textContent = dia + '/';
+    mesesPA.textContent = mes + '/';
+    anosPA.textContent = ano;
+
+});
+
 //===========TOQUIO  ===============
 const horasJP = document.getElementById('horaJP');
 const minutosJP = document.getElementById('minutoJP');
@@ -146,5 +292,54 @@ const dataJP = setInterval(function time(){
     diasJP.textContent = dia + '/';
     mesesJP.textContent = mes + '/';
     anosJP.textContent = ano;
+
+});
+
+
+
+//===========TOQUIO  ===============
+const horasS = document.getElementById('horaS');
+const minutosS = document.getElementById('minutoS');
+const segundosS = document.getElementById('segundoS');
+const diasS =document.getElementById('diaS');
+const mesesS =document.getElementById('mesS');
+const anosS =document.getElementById('anoS');
+
+
+const relogioS = setInterval(function time(){
+    //pega a hora atual do sistema com a função getHours()
+    let relogio =new Date();
+    let hora = relogio.getUTCHours()-14;
+    let minuto = relogio.getUTCMinutes();
+    let segundo = relogio.getUTCSeconds();
+   
+    // verifica se o valor do horário é menor que 10 e adiciona o 0 na frente
+    if (hora < 10)  hora = '0' + hora;
+    if (minuto < 10)  minuto = '0' + minuto;
+    if (segundo < 10)  segundo = '0' + segundo;
+    
+    // atualiza o valor do horário
+    horasS.textContent = hora;
+    minutosS.textContent = minuto;
+    segundosS.textContent = segundo;
+
+});
+
+
+const dataS = setInterval(function time(){
+    //pega a hora atual do sistema com a função getHours()
+    let calendario =new Date();
+    let dia = calendario.getUTCDate()+1;
+    let mes = calendario.getUTCMonth()+1;
+    let ano = calendario.getUTCFullYear();
+    
+    if (dia < 10)  dia = '0' + dia ;
+    if (mes < 10)  mes = '0' + mes ;
+    if (ano < 10)  ano = '0' + ano;
+
+    // atualiza o valor do horário
+    diasS.textContent = dia + '/';
+    mesesS.textContent = mes + '/';
+    anosS.textContent = ano;
 
 });
