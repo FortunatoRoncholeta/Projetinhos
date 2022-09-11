@@ -13,7 +13,14 @@ const relogio = setInterval(function time(){
     let hora = relogio.getUTCHours()-3;
     let minuto = relogio.getUTCMinutes();
     let segundo = relogio.getUTCSeconds();
-   
+    let periodo = "AM";
+
+    if (horas==0){
+        horas=12;
+    }else if(horas >=12){
+        horas= horas -12;
+        period="PM"
+    }
     // verifica se o valor do horário é menor que 10 e adiciona o 0 na frente
     if (hora < 10)  hora = '0' + hora;
     if (minuto < 10)  minuto = '0' + minuto;
@@ -71,6 +78,15 @@ const relogioNY = setInterval(function time(){
     let minuto = relogio.getUTCMinutes();
     let segundo = relogio.getUTCSeconds();
    
+    let periodo = "AM";
+
+    if (horas==0){
+        horas=12;
+    }else if(horas >=12){
+        horas= horas -12;
+        period="PM"
+    }
+
     // verifica se o valor do horário é menor que 10 e adiciona o 0 na frente
     if (hora < 10)  hora = '0' + hora;
     if (minuto < 10)  minuto = '0' + minuto;
@@ -119,6 +135,15 @@ const relogioL = setInterval(function time(){
     let minuto = relogio.getUTCMinutes();
     let segundo = relogio.getUTCSeconds();
    
+    let periodo = "AM";
+
+    if (horas==0){
+        horas=12;
+    }else if(horas >=12){
+        horas= horas -12;
+        period="PM"
+    }
+
     // verifica se o valor do horário é menor que 10 e adiciona o 0 na frente
     if (hora < 10)  hora = '0' + hora;
     if (minuto < 10)  minuto = '0' + minuto;
@@ -168,6 +193,14 @@ const relogioP = setInterval(function time(){
     let minuto = relogio.getUTCMinutes();
     let segundo = relogio.getUTCSeconds();
    
+    let periodo = "AM";
+
+    if (horas==0){
+        horas=12;
+    }else if(horas >=12){
+        horas= horas -12;
+        period="PM"
+    }
     // verifica se o valor do horário é menor que 10 e adiciona o 0 na frente
     if (hora < 10)  hora = '0' + hora;
     if (minuto < 10)  minuto = '0' + minuto;
@@ -216,7 +249,14 @@ const relogioPA = setInterval(function time(){
     let hora = relogio.getUTCHours()+2;
     let minuto = relogio.getUTCMinutes();
     let segundo = relogio.getUTCSeconds();
-   
+    let periodo = "AM";
+
+    if (horas==0){
+        horas=12;
+    }else if(horas >=12){
+        horas= horas -12;
+        period="PM"
+    }
     // verifica se o valor do horário é menor que 10 e adiciona o 0 na frente
     if (hora < 10)  hora = '0' + hora;
     if (minuto < 10)  minuto = '0' + minuto;
@@ -263,7 +303,14 @@ const relogioJP = setInterval(function time(){
     let hora = relogio.getUTCHours()-15;
     let minuto = relogio.getUTCMinutes();
     let segundo = relogio.getUTCSeconds();
-   
+    let periodo = "AM";
+
+    if (horas==0){
+        horas=12;
+    }else if(horas >=12){
+        horas= horas -12;
+        period="PM"
+    }
     // verifica se o valor do horário é menor que 10 e adiciona o 0 na frente
     if (hora < 10)  hora = '0' + hora;
     if (minuto < 10)  minuto = '0' + minuto;
@@ -317,7 +364,14 @@ const relogioS = setInterval(function time(){
     if (hora < 10)  hora = '0' + hora;
     if (minuto < 10)  minuto = '0' + minuto;
     if (segundo < 10)  segundo = '0' + segundo;
-    
+    let periodo = "AM";
+
+    if (horas==0){
+        horas=12;
+    }else if(horas >=12){
+        horas= horas -12;
+        period="PM"
+    }
     // atualiza o valor do horário
     horasS.textContent = hora;
     minutosS.textContent = minuto;
