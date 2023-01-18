@@ -1,0 +1,275 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+/*====ZERA CONFIGS====*/
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+header{
+    z-index: 1;
+    position: fixed;
+    background: #132835;
+    padding: 20px;
+    width: 100%;
+    height: 90px;
+}
+
+ 
+
+form{
+   
+    padding: 20px;
+    background-color: #1335309d;
+    margin-top: 100px;
+    max-width: 100%;
+    max-height: 100%;
+    text-align: center;
+    
+    
+
+}
+ form ,label{
+   
+    border-radius: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding: 10px;
+    text-align: left;
+    
+
+}
+label{
+   
+    font-size: 20px;
+    color:black;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+input{
+    
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+
+table{
+    border-radius: 20px;
+    margin-top: 100px;
+    max-width: 100%;
+    max-height: 100%;
+    text-align: center;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-block-end: 30px;
+   
+    
+}
+th{
+    
+    background-color: #1335309d;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    
+   
+    
+
+}
+
+
+td{
+    background-color: #1335309d;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+   
+
+
+    
+}
+
+body{
+   
+    background-image: url(https://img.freepik.com/vetores-gratis/fundo-de-textura-abstrato-verde-com-aquarela_65186-2633.jpg?w=2000);
+    /* background-image: url(https://cdn.pixabay.com/photo/2015/07/03/12/24/background-830134_960_720.jpg);   */
+    font-family: "Poppins", sans-serif;
+     grid-template-columns: repeat 
+        
+}
+
+
+.conteudo{ 
+    z-index: -1;
+    background-image:url(IMG/fundo1.png);
+    border-radius: 8%;
+    margin-top: 100px;
+    margin-left: 280px;
+    margin-right:auto;
+     /*ativa o grid*/
+     display: grid;
+     /*divindo o conteiner em colunas 2 */
+    grid-template-rows: repeat(2);
+    text-align: center;
+    
+}
+.left h3{
+    color: #fff;
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 800;
+}
+.left span{
+    color: #51b3ec;
+}
+
+
+.form_login{
+    margin-top: 100px;
+    max-width: 100%;
+    max-height: 100%;
+    text-align: center;
+   
+
+    
+    
+}
+/*====BOTAO SAIR====*/
+.sair_btn{
+    padding: 5px;
+    width: 80px;
+    background: #51b3ec;
+    text-decoration: none;
+    float: right;
+    text-align: center;
+    margin-top: -30px;
+    margin-right: 40px;
+    
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+    transition: 0.5s;
+    transition-property: background;
+    
+}
+.sair_btn:hover{
+    background: #e61414;
+    text-decoration: none;
+}
+/*====BOTAO LOGIN====*/
+.login_btn{
+    padding: 5px;
+    width: 80px;
+    text-align: center;
+    background: #51b3ec;
+    float: right;
+    margin-top: -30px;
+    margin-right: 40px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+    transition: 0.5s;
+    transition-property: background;
+}
+.login_btn:hover{
+    background: #4acf6b;
+    text-decoration: none;
+}
+/*====BARRA LATERAL====*/
+.sidebar{
+    position: fixed;
+    
+    width: 250px;
+    height: 100%;
+    margin-top: 90px;
+    padding-top: 30px;
+    left: 0;
+    background: #193446;
+    transition: 0.5s;
+    transition-property: left;
+}
+/*====FOTO PERFIL====*/
+.sidebar .image{
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+}
+/*====NICK USUARIO====*/
+.sidebar h2{
+    color: #ccc;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+/*====OPÇAO DO MENU====*/
+.sidebar a{
+    color: rgb(255, 255, 255);
+    display: block;
+    width: 100%;
+    line-height: 60px;
+    
+    padding-left: 40px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    transition-property:background ;
+}
+.sidebar a:hover{
+    background: #51b3ec;
+    text-decoration: none;
+}
+.sidebar ion-icon{
+    padding-right: 10px;
+}
+
+label #sidebar_btn{
+    z-index: 1;
+    position: fixed;
+    left: 300px;
+    color: #fff;
+    font-size: 25px;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: 0.5s;
+    transition-property:color ;
+}
+label #sidebar_btn:hover{
+    color: #51b3ec;
+}
+#check:checked ~ .sidebar{
+    left: -190px;
+}
+#check:checked ~ .sidebar a span{
+    display: none;
+}
+#check:checked ~ .sidebar a{
+    font-size: 20px;
+    margin-left: 170px;
+    width: 80px;
+}
+.content{
+    background: url(https://transparencia.itaguai.rj.gov.br/wp-content/uploads/2020/05/background-site_241919.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    transition: 0.5s;
+}
+#check:checked ~ .content{
+    margin-left: 60px;
+}
+#check{
+    display: none;
+}
+
+footer{
+    
+    bottom: 0;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 15px;
+    font-weight: 500;
+   
+  
+}

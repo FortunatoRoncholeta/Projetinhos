@@ -1,0 +1,51 @@
+{%extends "Template.html"%}
+{%block conteudo %}
+    <div>
+        <h1>Atividade Física</h1>
+        <form class="form" id="formAtividadeFisica" action="/criar_atividadefisica" method="post">
+            <label id="label" hidden>Código</label>
+            <input type="text" name="codigo" id="codigo" readonly="true" hidden/>
+            
+            <div class="col-md-4 mb-3">
+            <input type="text" name="nome" id="nome" placeholder="Nome">
+            </div>
+
+            <div class="col-md-4 mb-3">
+            <input type="text" name="descricao" id="descricao" placeholder="Descrição">
+            </div>
+
+            <div class="col-md-4 mb-3">
+            <input type="number" name="gasto_calorico" id="gasto_calorico" placeholder="Gasto Calorico">
+            </div>
+            <div class="col-md-4 mb-3">
+            <label>Ativo</label>
+            <input type="checkbox"  value="1" name="ativo" id="ativo">
+            </div>
+            <input id="btnAtividadeFisica" type="submit" class="btn btn-primary btn-lg" value="Enviar"> 
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Gasto Calórico</th>
+                    <th>Ativo</th>
+                    <th>Editar</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for atividadefisica in atividadesfisicas %}
+                <tr>
+                    <td>{{atividadefisica.codigo}}</td>
+                    <td>{{atividadefisica.nome}}</td>
+                    <td>{{atividadefisica.descricao}}</td>
+                    <td>{{atividadefisica.gasto_calorico}}</td>
+                    <td>{{atividadefisica.ativo}}</td>
+                    <td><button onclick="carregaDadosDaTabelaParaFormAtividadeFisica(this)" type="submit" class="btn btn-primary">Editar</button></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    <div>
+{%endblock %}
