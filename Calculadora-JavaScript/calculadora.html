@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/png;base64,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">
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+</head>
+
+<body>
+    <div class="fundo">
+        <h1>Fortunato Roncholeta</h1>
+        <!--Parte central -->
+        <div class="calculadora">
+
+            <h1>Calculadora</h1>
+            <p id="resultado"></p>
+            <table>
+                <!--Primeira linha  -->
+                <tr>
+                    <td><button onclick="clean()">C</button></td>
+                    <td><button onclick="insert('%')">%</button>
+                    </td>
+                    <!--sinal de apagaar -->
+                    <td><button onclick="back()"> &lt</button></td>
+                    <td><button onclick="insert('/')">/</button></td>
+                </tr>
+                <!--Segunda linha  -->
+                <tr>
+                    <td><button onclick="insert('7')">7</button></td>
+                    <td><button onclick="insert('8')">8</button> </td>
+                    <td><button onclick="insert('8')">9</button></td>
+                    <td><button onclick="insert('*')">X</button></td>
+                </tr>
+                <!--Terceira linha  -->
+                <tr>
+                    <td><button onclick="insert('4')">4</button></td>
+                    <td><button onclick="insert('5')">5</button></td>
+                    <td><button onclick="insert('6')">6</button></td>
+                    <td><button onclick="insert('-')">-</button></td>
+                </tr>
+
+                <!--Quarta linha  -->
+                <tr>
+                    <td><button onclick="insert('1')">1</button></td>
+                    <td><button onclick="insert('2')">2</button></td>
+                    <td><button onclick="insert('3')">3</button></td>
+                    <td><button onclick="insert('+')">+</button></td>
+                </tr>
+
+                <!--Quinta linha  -->
+                <tr>
+                    <td><button onclick="insert('0.0')">0.0</button></td>
+                    <td><button onclick="insert('00')">00</button></td>
+                    <td><button onclick="insert('000')">000</button></td>
+                    <!--espandir coluna -->
+                    <td rowspan="2"><button class="igual" onclick="calc()">=</button></td>
+                </tr>
+
+                <!--Sexta linha  -->
+                <tr>
+                    <!--espandir linha -->
+                    <td colspan="2"><button class="zero" onclick="insert('0')">0</button></td>
+                    <td><button onclick="insert('.')">.</button></td>
+                </tr>
+
+            </table>
+
+
+
+        </div>
+    </div>
+    <script>
+        function insert(num) {
+            // pega o numero da Tabela (calculadora ) e joga no campo do resultado 
+            var numero = document.getElementById('resultado').innerHTML;
+            document.getElementById('resultado').innerHTML = numero + num;
+
+        }
+        function clean() {
+            // LIMPA RESULTADO
+            document.getElementById('resultado').innerHTML = "";
+        }
+
+        function calc() {
+            // pega o numero da Tabela (calculadora ) e faz o calculo 
+            var resultado = document.getElementById('resultado').innerHTML;
+            if (resultado) {
+                // eval faz a funçao da calculadora baseado nos simbolos que ele pega
+                document.getElementById('resultado').innerHTML = eval(resultado);
+            }
+
+            else
+                document.getElementById('resultado').innerHTML = "Campo Vazio"
+
+
+
+
+        }
+
+        function back() {
+
+            var resultado = document.getElementById('resultado').innerHTML;
+            // apaga os numero , length vai ler oque tem na Tag e apaga d traz pra frente
+            document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length - 1)
+        }
+
+    </script>
+</body>
+<footer>
+    <small>
+        <p>©Copyright 2022 - Fortunato Rocholeta</p>
+    </small>
+
+</footer>
+
+</html>
