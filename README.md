@@ -3,7 +3,7 @@
 
 
 
-Pequenos projetos/trabalhos realizados durante o periodo de graduação em Ciência da Computação.
+Pequenos projetos/trabalhos, realizados durante o período de graduação em Ciência da Computação.
 
 
 
