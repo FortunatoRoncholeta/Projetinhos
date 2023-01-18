@@ -1,0 +1,280 @@
+/* FONTES DO PROJETO */
+/* Rampart One */
+/* Special Elite */
+/* Reenie Beanie */
+/* Rye */
+/* Pinyon Script */
+/* IM Fell English SC */
+/* Cinzel Decorative */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=IM+Fell+English+SC&family=Pinyon+Script&family=Rampart+One&family=Reenie+Beanie&family=Rye&family=Special+Elite&display=swap');
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    font-family: 'Cinzel Decorative', cursive;
+    border: solid 10px rgb(9, 232, 32);
+   
+   
+   
+}
+
+
+
+
+.logo h1{
+    display: inline-block;
+    text-align: start;
+    margin-left: 100px;
+    
+    padding: 0;
+    font-size: 50pt;
+    font-weight: bold;
+    color: #441010;
+}
+
+.logo img{
+    display: inline-block;
+    margin-bottom: 0px;
+    padding: 0;
+    width: 90px;
+    height: 90px; 
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+     align-items: center; 
+    border: solid 10px #000;
+    background-image: url(https://www.wallpaperup.com/uploads/wallpapers/2015/10/20/821269/64a09c93bfc68fd073c6c57081bec291-700.jpg);
+    background-size: cover;
+    background-position: center center;
+    padding: 20px;
+    
+   
+}
+
+.card{
+    
+    border: solid 1px #000;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    border-radius: 4%;
+    background-image: url(img/fundo/paper-1074136.jpg);
+    background-size: cover;
+    height: 550px;
+    width: 400px;
+    padding: 40px 30px;
+    
+    
+}
+
+
+.card h1{
+    text-align: center;
+    font-weight: bold;
+    padding: 20px;
+    color: #441010;
+}
+
+
+
+.label-anime{
+    position: relative;
+    padding-top: 13px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+
+
+.label-anime label{
+    font-weight: bold;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 10px;
+    margin-left: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.label-anime input{
+    width: 100%;
+   
+    padding: 10px 10px;
+    display: inline-block;
+    border :0;
+    border-bottom: solid 2px #000000;
+    background-color: transparent;
+    outline: none;
+    min-width: 180px;
+    font-size: 16pt;
+    /* Animaçao */
+    transition: all 0.3s ease-in-out;
+    
+
+}
+
+
+.label-anime input:focus{
+    border-bottom: 2px solid #441010;
+}
+
+
+.label-anime input:focus +label{
+    font-size: 15pt;
+    margin-top: 0;
+    color: #441010;
+}
+ 
+
+
+label img{
+    width: 30px;
+    height: 30px;
+    
+    
+}
+
+
+.botao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 50px;
+    background-color:transparent;
+    border-color: #441010;
+    color: #441010;
+    padding: 7px;
+    font-weight: bold;
+    font-size: 18pt;
+    margin-top:20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.4s ease-in-out;
+
+}
+
+button img{
+    width: 30px;
+    height: 30px;
+    
+}
+
+button:hover{
+    background-color: #441010;
+    color: #fff;
+    font-size: 30px;
+}
+
+
+
+
+.separador{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+ 
+hr{
+    
+    width: 80%;
+    border: solid 1px #441010;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+
+.sem-conta{
+    margin-left: 20px;
+}
+
+
+.sem-conta p{
+    font-weight: bold;
+    color: #000;
+}
+
+.sem-conta a{
+    font-weight: bold;
+    color: #000;
+}
+.sem-conta a:hover{
+    font-weight: bold;
+    color: #441010;
+}
+
+footer{
+    
+    /* border: solid 1px #10f904; */
+    margin-bottom: 0;
+    height: 10em;
+}
+.rodape{
+    background-color: #441010;
+    height: 8px;
+}
+
+
+
+.rodape p{
+    text-align: center;
+}
+
+
+
+/* Responsividade midia query */
+
+
+
+
+/* max-width: quando for menor que -- aplica */
+@media (max-width: 630px){
+    .logo h1{
+        display: inline;
+        text-align: center;  
+    }
+
+    .logo img{
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 10px;
+       
+    }
+}
+
+@media (max-width: 550px){
+    .logo h1{
+        display: inline;
+        text-align: center;  
+        font-size: 30pt;
+    }
+
+    .logo img{
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 10px;
+       
+    }
+}
