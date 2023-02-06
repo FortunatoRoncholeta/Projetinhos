@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora do dia</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<!--onload ativa quando for carregar a pagina-->
+
+<body onload="carregar()">
+    <header>
+        <h1>Site interativo javaScript</h1>
+    </header>
+
+    <section id="relogio">
+        <h2>Hora do dia</h2>
+        <div id="msg">
+
+            Aqui vai aparecer a menssagem...
+
+        </div>
+        <div id="img">
+
+
+            <img id="imagem" src="img/manha.png" alt="foto do dia">
+
+        </div>
+
+    </section>
+
+    <section id="genero">
+        <div>
+            <h2>Descubra sua Idade</h2>
+            <p>
+                <label>Ano de nascimento </label>
+                <input type="number" min="0" id="txtano">
+            </p>
+            <p>
+                Sexo:
+                <input type="radio" name="radsex" checked>
+                <label for="">Masculino</label>
+                <input type="radio" name="radsex">
+                <label for="">Feminino</label>
+            </p>
+            <p>
+                <input type="button" value="Verificar" id="botaogenero" onclick="verificarano()">
+            </p>
+        </div>
+
+        <div id="res">
+            Preencha os dados pra descobrir sua idade
+
+        </div>
+    </section>
+
+
+    <footer>
+        <p>&copy; Roncholeta</p>
+    </footer>
+
+    <script src="js.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+body {
+    background-color: rgb(86, 215, 232);
+    font: normal 15pt Arial;
+}
+
+header {
+    color: white;
+    text-align: center;
+}
+
+section {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    width: 600px;
+    margin: auto;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.357);
+    margin-top: 50px;
+}
+
+#relogio {
+    text-align: center;
+
+}
+
+#txtano {
+    width: 100px;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+#botaogenero {
+    width: 100px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+div {
+
+    padding: 8px;
+}
+
+
+h2 {
+    text-align: center;
+}
+
+footer {
+    color: white;
+    text-align: center;
+    text-align: center;
+    font-style: italic;
+
+}
