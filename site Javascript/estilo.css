@@ -30,12 +30,20 @@ section {
     border-radius: 5px;
 }
 
-#botaogenero {
-    width: 100px;
+#botao {
+    width: 105px;
     height: 40px;
     font-size: 20px;
     border-radius: 5px;
 }
+
+
+select#tabnota {
+    font-size: 12pt;
+    width: 200px;
+}
+
+
 
 div {
 

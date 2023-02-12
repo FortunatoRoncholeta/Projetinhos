@@ -46,12 +46,62 @@
                 <label for="">Feminino</label>
             </p>
             <p>
-                <input type="button" value="Verificar" id="botaogenero" onclick="verificarano()">
+                <input type="button" value="Verificar" id="botao" onclick="verificarano()">
             </p>
         </div>
 
         <div id="res">
             Preencha os dados pra descobrir sua idade
+
+        </div>
+    </section>
+
+    <section id="contando">
+        <h2 id="titulocontando">Contando Números</h2>
+        <div id="dados">
+            <p> Inicio: <input type="number" id="txtinicio"></p>
+            <p> Fim: <input type="number" id="txtfim"></p>
+            <p> Passo: <input type="number" id="txtpasso"></p>
+            <input id="botao" type="button" value="Contar" onclick="contanumero()">
+        </div>
+        <div id="resultadocon">
+            <p>Preparando Contagem...</p>
+
+        </div>
+    </section>
+
+    <section id="tabuada">
+        <h2>Tabuada</h2>
+        <div>
+
+            <label>Número: <input type="number" id="txtmulti"></label>
+            <input id="botao" type="button" value="Multiplicar" onclick="multiplicar()">
+        </div>
+        <div>
+            <select id="resultadotab" size="10">
+
+                <option>Digite um Número a cima</option>
+            </select>
+
+
+        </div>
+    </section>
+
+
+    <section id="analisa">
+        <h2>Analisador de Notas</h2>
+        <div>
+            <label>Notas:<input type="number" id="txtnotas"> </label>
+            <input type="button" value="Adicioanar" onclick="adicionar()">
+        </div>
+        <select id="tabnota" size="10">
+            <option id="opt">Sem notas no momento</option>
+        </select>
+
+        <p>
+            <input type="button" value="finalizar" onclick="finalizar()">
+        </p>
+        <div id="resultadoNotas">
 
         </div>
     </section>
