@@ -1,5 +1,9 @@
-# Site sobre Ecbho dot Alexa
+# Conversor de expressões infixas para pos-fixas
 
 ---
 
-Projeto de site simples, desenvolvido em HTML e CSS e JavaScript para diciplina Copiladores no curso de ciência da computação.A aplicação tem a ideia de receber uma expressão Infixada e retornar a sua expressão pós fixada.
+projeto desenvolvido durante a graduação em ciência da computação para a diciplina de Copiladores.
+O projeto consiste em uma aplicação Web (HTML , CSS JavaScript) que tem o objetivo de converter uma expressão infixa para pos-fixa .
+
+Procedimento 
+primeiro temos a entrada da espresão infixa de forma que ela é passada para dentro de uma string, em seguinda quando chamamos a função ela cria duas plilhas , uma para o armazenamento dos operadores e a segunda para armazenar a expresão ja convertida .
