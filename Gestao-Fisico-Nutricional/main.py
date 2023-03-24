@@ -10,7 +10,7 @@ app.secret_key = "teste"
 DB = "dbgestaofisiconutricional.db"
 atividadefisica_dao = AtividadeFisicaDao(DB)
 alimento_dao = AlimentoDao(DB)
-cardapio_dao = CardapioDao(DB)s
+cardapio_dao = CardapioDao(DB)
 ficha_atividade_fisica_dao = FichaAtividadeFisicaDao(DB)
 usuario_dao = UsuarioDao(DB)
 load_banco_de_dados(DB, "CriaBD")
