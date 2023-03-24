@@ -1,9 +1,10 @@
-# Site interativo Javascript
+# Site sobre a criação do icone do android
 ***
 
+Projeto de site Responsivo, desenvolvido em HTML e CSS para diciplina de tecnologias web no curso de ciência da computação.
 
 
-site construido ao longo do curso de graduação com o intuito de aprender e praticar mais Javascript na web.
+![preview](https://raw.githubusercontent.com/FortunatoRoncholeta/Projetinhos/main/Site-android/site.png)
 
 
 
