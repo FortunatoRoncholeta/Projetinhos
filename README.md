@@ -1,7 +1,7 @@
 # Projetos
 ***
 
-Pequenos projetos/trabalhos, realizados durante o período de graduação em Ciência da Computação. 
+## Projetos/trabalhos, realizados durante o período de graduação em Ciência da Computação. 
 
 ![preview](https://raw.githubusercontent.com/FortunatoRoncholeta/Projetinhos/main/IFSULDEMINAS-aplica%C3%A7%C3%B5es-horizontais-02.png)
 
