@@ -1,6 +1,8 @@
 # Gestao-Fisico-Nutricional
 Projeto de Engenharia de Software II
 
+Contribuições: https://github.com/isaias-s-souza, https://github.com/maria2122
+
 ## Primeiros Passos
 ### Na pasta raiz usando o command prompt do windows faça:
 ## Por que criar um ambiente virtual?
