@@ -1,0 +1,33 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    
+}
+
+form{
+    background-color: white;
+    border-radius: 20px;
+    margin: auto;
+    margin-top: 300px;
+    min-width: 320px;
+    max-width: 800px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.405);
+    text-align: center;
+}
+
+form > div> h1{
+font-size:5em;
+}
+
+form > div> input{
+
+    border-radius: 10px;
+    width: 500px;
+    height: 40px;
+    text-align:center;
+    margin:10px
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Ferramentas</title>
+    <link rel="stylesheet" href="/estilo.css">
+</head>
+<header>
+    <h1>Multi-Ferramentas</h1>
+
+    <nav>
+        <li>
+            <ul>
+                Matematica
+                <li><a href="pages/baskara.html">Baskara</a></li>
+                <li><a href="">Pitagoras</a></li>
+            </ul>
+        </li>
+
+    </nav>
+</header>
+
+<body onload="iniciou()">
+
+    <main id="main">
+
+        <h2 id="bemvindo">Formula de Bhaskara</h2>
+        <div>
+            <p>Digite o A e o B </p>
+
+            <form action="">
+
+                <input type="number" name="variavelA" id="variavelA" placeholder="Digite o valor de A">
+                <input type="number" name="variavelB" id="variavelB" placeholder="Digite o valor de B">
+                <input type="number" name="variavelC" id="variavelC" placeholder="Digite o valor de C">
+                <input onclick="calcular()" type="submit" value="Enviar">
+            </form>
+
+        </div>
+
+    </main>
+
+</body>
+<script>
+    function calcular() {
+        alert(`entrou`)
+        var variavelA = document.getElementById("variavelA")
+        var variavelB = document.getElementById("variavelB")
+        var variavelC = document.getElementById("variavelC")
+
+
+        var A = Number(variavelA.value)
+        var B = Number(variavelB.value)
+        var C = Number(variavelC.value)
+
+        var delta = B * B - 4 * A * C
+
+        var x1 = (-B + Math.sqrt(delta)) / (2 * A)
+        var x2 = (-B - Math.sqrt(delta)) / (2 * A)
+
+
+        alert(`O valor de delta é : ${delta}`)
+        alert(`Os valores das raizes sao :${x1} e ${x2}`)
+        alert(`saiu`)
+    }
+</script>
+
+<footer>
+
+
+</footer>
+
+</html>
