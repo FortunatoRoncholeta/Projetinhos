@@ -3,21 +3,21 @@ function Calcula(){
 
 function equacao_equilibrio_acido_base(pH) {
     // Equação de equilíbrio ácido-base que relaciona o pH com as concentrações de H+ e OH-
-    return Math.pow(10, -pH) - Math.pow(10, -14 + pH);
+    return Math.pow(10, -pH) - Math.pow(10, -14 + pH)
   }
   
   function bissecao(f, a, b, tolerancia) {
     while (Math.abs(b - a) > tolerancia) {
-      let c = (a + b) / 2;
+      let c = (a + b) / 2
       if (f(c) === 0) {
-        return c;
+        return c
       } else if (f(a) * f(c) < 0) {
-        b = c;
+        b = c
       } else {
-        a = c;
+        a = c
       }
     }
-    return (a + b) / 2;
+    return (a + b) / 2
   }
   
   // Definindo os valores iniciais
@@ -33,5 +33,10 @@ function equacao_equilibrio_acido_base(pH) {
   // Chamando a função de bisseção para encontrar o valor do pH
   let pH = bissecao(equacao_equilibrio_acido_base, a, b, tolerancia);
   
-  console.log("O pH da solução é:", pH);
+  var res = document.getElementById('resultado')
+
+  res.innerHTML = "O pH da solução é: " + pH.toFixed(2);
+  
+
+  console.log("O pH da solução é:", pH)
 }
