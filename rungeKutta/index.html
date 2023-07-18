@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previsão de crescimento de bactérias</title>
+
+    <!--Biblioteca ultilizada para plotar o grafico-->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<header>
+    <h1>Previsão de crescimento de bactérias</h1>
+</header>
+
+<body>
+
+    <main>
+        <div>
+            <input type="number" name="" id="cres" step="any" placeholder="Taxa de crescimento " required>
+        </div>
+        <div>
+            <input type="number" name="" id="sup" placeholder="Capacidade de suporte" required>
+        </div>
+        <div>
+            <input type="number" name="" id="pop" placeholder="densidade populacional" required>
+        </div>
+        <div>
+            <input type="number" name="" id="ini" placeholder="tempo inicial (dias)" required>
+        </div>
+        <div>
+            <input type="number" name="" id="fim" placeholder="tempo final (dias)" required>
+        </div>
+        <div>
+            <input type="number" name="" id="passo" placeholder="intervalo" required>
+        </div>
+        <div>
+            <button id="botao" onclick="calcularCrescimento()">Calcular</button>
+            <button id="botaolimpar" onclick="limpar()">Limpar</button>
+
+        </div>
+
+
+    </main>
+    <!--posiçao do grafico na pagina-->
+    <canvas id="myChart"></canvas>
+
+    <script src="js.js"></script>
+</body>
+
+<footer>
+
+    <p> &copy Fortunato Roncholeta</p>
+</footer>
+
+</html>
