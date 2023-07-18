@@ -6,6 +6,8 @@ function equacao_equilibrio_acido_base(pH) {
     return Math.pow(10, -pH) - Math.pow(10, -14 + pH)
   }
   
+  // limites a e b sendo incial e final 
+  // ontinua iterando enquanto a diferença entre b e a for maior do que a tolerância definida.
   function bissecao(f, a, b, tolerancia) {
     while (Math.abs(b - a) > tolerancia) {
       let c = (a + b) / 2
