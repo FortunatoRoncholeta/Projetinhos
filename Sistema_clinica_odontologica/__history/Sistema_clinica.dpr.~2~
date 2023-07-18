@@ -1,0 +1,20 @@
+program Sistema_clinica;
+
+uses
+  Vcl.Forms,
+  UnitPrincipal in 'UnitPrincipal.pas' {FormPrincipal},
+  UnitPaciente in 'UnitPaciente.pas' {FormPaciente},
+  UnitAgenda in 'UnitAgenda.pas' {FormAgenda},
+  UnitDM in 'UnitDM.pas' {DataModule1: TDataModule};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFormPrincipal, FormPrincipal);
+  Application.CreateForm(TFormPaciente, FormPaciente);
+  Application.CreateForm(TFormAgenda, FormAgenda);
+  Application.CreateForm(TDataModule1, DataModule1);
+  Application.Run;
+end.

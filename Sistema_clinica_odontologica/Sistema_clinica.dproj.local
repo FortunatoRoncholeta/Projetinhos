@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2023/07/18 14:59:17.871,=D:\DIRETORIOS\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/07/18 15:18:55.074,D:\DIRETORIOS\Documentos\GitHub\Projetinhos\Sistema_clinica_odontologica\UnitPrincipal.dfm=D:\DIRETORIOS\Documentos\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2023/07/18 15:18:55.074,D:\DIRETORIOS\Documentos\GitHub\Projetinhos\Sistema_clinica_odontologica\UnitPrincipal.pas=D:\DIRETORIOS\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/07/18 15:19:18.604,D:\DIRETORIOS\Documentos\GitHub\Projetinhos\Sistema_clinica_odontologica\Sistema_clinica.dproj=D:\DIRETORIOS\Documentos\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2023/07/18 16:06:06.108,=D:\DIRETORIOS\Documentos\GitHub\Projetinhos\Sistema_clinica_odontologica\Unit1.pas</Transaction>
+    <Transaction>2023/07/18 16:07:21.954,=D:\DIRETORIOS\Documentos\GitHub\Projetinhos\Sistema_clinica_odontologica\Unit2.pas</Transaction>
+    <Transaction>2023/07/18 16:08:32.781,D:\DIRETORIOS\Documentos\GitHub\Projetinhos\Sistema_clinica_odontologica\UnitPaciente.pas=D:\DIRETORIOS\Documentos\GitHub\Projetinhos\Sistema_clinica_odontologica\Unit2.pas</Transaction>
+    <Transaction>2023/07/18 16:08:32.781,D:\DIRETORIOS\Documentos\GitHub\Projetinhos\Sistema_clinica_odontologica\UnitPaciente.dfm=D:\DIRETORIOS\Documentos\GitHub\Projetinhos\Sistema_clinica_odontologica\Unit2.dfm</Transaction>
+    <Transaction>2023/07/18 16:08:51.796,=D:\DIRETORIOS\Documentos\GitHub\Projetinhos\Sistema_clinica_odontologica\Unit3.pas</Transaction>
+    <Transaction>2023/07/18 16:08:59.622,D:\DIRETORIOS\Documentos\GitHub\Projetinhos\Sistema_clinica_odontologica\UnitAgenda.pas=D:\DIRETORIOS\Documentos\GitHub\Projetinhos\Sistema_clinica_odontologica\Unit3.pas</Transaction>
+    <Transaction>2023/07/18 16:08:59.622,D:\DIRETORIOS\Documentos\GitHub\Projetinhos\Sistema_clinica_odontologica\UnitAgenda.dfm=D:\DIRETORIOS\Documentos\GitHub\Projetinhos\Sistema_clinica_odontologica\Unit3.dfm</Transaction>
+    <Transaction>2023/07/18 17:12:37.731,=D:\DIRETORIOS\Documentos\GitHub\Projetinhos\Sistema_clinica_odontologica\Unit1.pas</Transaction>
+    <Transaction>2023/07/18 17:19:19.198,D:\DIRETORIOS\Documentos\GitHub\Projetinhos\Sistema_clinica_odontologica\UnitDM.dfm=D:\DIRETORIOS\Documentos\GitHub\Projetinhos\Sistema_clinica_odontologica\Unit1.dfm</Transaction>
+    <Transaction>2023/07/18 17:19:19.198,D:\DIRETORIOS\Documentos\GitHub\Projetinhos\Sistema_clinica_odontologica\UnitDM.pas=D:\DIRETORIOS\Documentos\GitHub\Projetinhos\Sistema_clinica_odontologica\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>
