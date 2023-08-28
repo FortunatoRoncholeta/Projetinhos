@@ -52,7 +52,15 @@ class StartGame:
         # ball_img = self.ball.img
         # ball = self.ball.rect
 
-        
+        self.font = pygame.font.Font(None, 50)
+        self.placar_player1 = self.font.render(
+            str(self.player1_score), True, "white")
+        self.placar_player2 = self.font.render(
+            str(self.player2_score), True, "white")
+        self.fade_img = pygame.Surface((1280, 720)).convert_alpha()
+        self.fade = self.fade_img.get_rect()
+        self.fade_img.fill("black")
+        self.fade_alpha = 255
 
         self.music = pygame.mixer.Sound("assets/music.ogg")
         self.music.play(-1)
@@ -163,7 +171,20 @@ class StartGame:
                 self.display.blit(self.current_scene.bg.image,
                                   self.current_scene.bg.rect)
                 self.display.blit(self.fade_img, self.fade)
-          
+            elif self.scene == "menu":
+                self.current_scene = Menu()
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+                    if event.type == pygame.KEYDOWN:
+                        if event.key == pygame.K_RETURN:
+                            self.scene = "game"
+                            fade_alpha = 255
+                            start = pygame.mixer.Sound("assets/start.wav")
+                            start.play()
+                        if event.key == pygame.K_q:
+                            pygame.quit()
+
                     self.current_scene.events(event)
 
                 if self.fade_alpha > 0:
