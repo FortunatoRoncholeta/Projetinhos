@@ -1,0 +1,80 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+/* principal pro efeito parallax*/
+body, html{
+    margin: 0px;
+    font: 16px "Lato", sans-serif;
+    color: #777;
+    height: 100%;
+}
+
+h2{
+    color: #fff;
+    background-color: #111;
+    border-radius: 15px;
+    padding: 20px;
+    font-size: 30px;
+    letter-spacing: 5px; /*espaçamento entre letras*/ 
+    text-transform: uppercase;
+}
+h3{
+    text-transform: uppercase;
+    color: #111;
+    text-align: center;
+}
+
+/* EFEITO PARALLAX*/
+
+.conteudo{
+    font-size: 2em;
+    color: #777;
+    text-align: center;
+    padding: 50px 80px;
+}
+
+.conteudo-1 , .conteudo-2, .conteudo-4, .conteudo-5{
+    position: relative;
+    height: 100%;
+    opacity: 0.7;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    /*alinhando titulos*/
+
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100vh; /* Define a altura da div para ocupar a altura total da janela do navegador */
+}
+
+.conteudo-1{
+    background-image: url(imagens/imagem1.jpg);  
+}
+
+.conteudo-2{
+    background-image: url(imagens/imagem2.jpg);
+}
+
+.conteudo-4{
+    background-image: url(imagens/imagem4.jpg);
+}
+
+.conteudo-5{
+    background-image: url(imagens/imagem5.jpg);
+}
+
+
+footer {
+    padding: 20px;
+    text-align: center;
+}
+
+footer p {
+    color: #666;
+    font-size: 14px;
+}
