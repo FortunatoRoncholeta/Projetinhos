@@ -14,6 +14,7 @@ body, html{
 h2{
     color: #fff;
     background-color: #111;
+    opacity: 0.8;
     border-radius: 15px;
     padding: 20px;
     font-size: 30px;
