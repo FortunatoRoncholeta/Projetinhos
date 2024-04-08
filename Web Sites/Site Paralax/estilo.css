@@ -21,11 +21,7 @@ h2{
     letter-spacing: 5px; /*espaçamento entre letras*/ 
     text-transform: uppercase;
 }
-h3{
-    text-transform: uppercase;
-    color: #111;
-    text-align: center;
-}
+
 
 /* EFEITO PARALLAX*/
 
