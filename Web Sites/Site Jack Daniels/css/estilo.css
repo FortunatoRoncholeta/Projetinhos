@@ -5,6 +5,15 @@
     box-sizing: border-box;
 }
 
+
+:root{
+    --fonte_principal:sans serif;
+
+    --cor0:#111111;
+    --cor1:#b8a98d; 
+    
+}
+
 body{
     background: #f4f2ec url(../img/fundo.png) ;
     background-repeat: repeat-x;
@@ -58,41 +67,165 @@ li a{
 }
 
 li a{
-    color: #b8a98d;
+    color: var(--cor1);
 }
 
 li a:hover{
     color: #fff;
-    border-top: solid #b8a98d 2px;
+    border-top: solid var(--cor1) 2px;
 }
 
 
 /*Container*/
 
 .conteudo-1{
-    height: 100vh;
+    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    background-image: url(../img/fundo2.jpg);
-
-}
-
-.capa{
-    border: solid 2px red;
+    background-image: url(../img/fundo2.jpg);   
     display: flex;
-    justify-content: end ;
+    justify-content: space-around;
 
 }
 
-#jack{
-    margin-left:40px ;
+
+
+#texto-principal{
+    margin: 2%;
+    background-color: #03030349;
+    padding: 10px;
+  
+}
+
+#texto-principal h2{
+    text-align: center;
+    padding: 5px;
+    font-size: 5em ;
+    color: #fff;
+}
+
+#texto-principal h3{
+    text-align: center;
+    padding: 5px;
+    font-size: 2.5em;
+    color: var(--cor1);
+}
+
+#texto-principal p{
+    font-size: 1.6em;
+    color: #fff;
+    text-align: justify;
+}
+
+#btn-compre{
+    text-decoration: none;
+    font-size: 1.6em ;
+    background-color: #b8a98d;
+    border-radius: 20px;
+    padding: 10px;
+    color: var(--cor0);
+    
+}
+
+#btn-compre:hover{
+    color: var(--cor1);
+    background-color: var(--cor0);
+}
+
+
+#imagem-capa{
+    height: 300px;
+    margin: 2%;
+    margin-right: 5%;
+    
+}
+
+#imagem-capa img{
+    border-radius: 20px;
+    border: var(--cor1) 3px solid;
+    
+}
+
+/*segunda parte*/
+
+.conteudo-2{
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-image: url(../img/fundo1.jpg);
+    
+
+}
+
+.licores{
+    display: flex;
+    justify-content: space-around
+}
+
+#licor{
+    color: #f4f2ec;
+    font-size: 4em;
+    text-align: center;
+    background-color: #111111d0;
+    
+}
+
+.licores img{
+    width: 300px;
+    height: 400px;
+    padding: 2px;
+    margin: 20px;
+    border-radius: 30px;
+    box-shadow: var(--cor0) 0px 0px 0px 2px, var(--cor1) 0px 4px 6px -1px, var(--cor1) 0px 1px 0px inset;
 }
 
 
 
 
+
+ .texto-secundario{
+    display: none;
+    position: absolute;
+    color: var(--cor1);
+    background-color: #111111d8;
+    border-radius: 0px 20px 20px 0px;
+    font-size: 1.4em;
+    text-align: start;
+    width: 300px;
+    padding: 10px;
+    top: 70%; /* Ajusta o texto para o centro verticalmente */
+    left: 50%; /* Ajusta o texto para o centro horizontalmente */
+    transform: translate(-50%, -50%); /* Move o texto para a posição correta */
+    user-select: none;
+}
+.card {
+    position: relative;
+    overflow: hidden; /* Para garantir que a imagem aumentada não ultrapasse os limites do contêiner */
+    transition: transform 0.3s ease; /* Adiciona uma transição suave */
+    cursor: pointer;
+}
+
+.card img {
+    transition: transform 0.3s ease; /* Aplica a transição à imagem */
+}
+
+.card:hover {
+    transform: scale(1.1); /* Aumenta o tamanho da `.card` em 10% quando o mouse passa sobre ela */
+}
+
+.card:hover img {
+    transform: scale(1.1); /* Aumenta o tamanho da imagem em 10% quando o mouse passa sobre `.card` */
+}
+
+
+
+.card:hover .texto-secundario {
+    display: block;
+}
 
 
 
