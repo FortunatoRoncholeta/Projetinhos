@@ -5,7 +5,6 @@
     box-sizing: border-box;
 }
 
-
 :root{
     --fonte_principal:sans serif;
 
@@ -48,6 +47,7 @@ nav{
     
     margin-right: 40px;
 }
+
 nav ul{
     list-style: none;
     height: 20px;
@@ -75,7 +75,6 @@ li a:hover{
     border-top: solid var(--cor1) 2px;
 }
 
-
 /*Container*/
 
 .conteudo-1{
@@ -89,8 +88,6 @@ li a:hover{
     justify-content: space-around;
 
 }
-
-
 
 #texto-principal{
     margin: 2%;
@@ -157,8 +154,6 @@ li a:hover{
     background-size: cover;
     background-attachment: fixed;
     background-image: url(../img/fundo1.jpg);
-    
-
 }
 
 .licores{
@@ -182,9 +177,6 @@ li a:hover{
     border-radius: 30px;
     box-shadow: var(--cor0) 0px 0px 0px 2px, var(--cor1) 0px 4px 6px -1px, var(--cor1) 0px 1px 0px inset;
 }
-
-
-
 
 
  .texto-secundario{
@@ -220,8 +212,6 @@ li a:hover{
 .card:hover img {
     transform: scale(1.1); /* Aumenta o tamanho da imagem em 10% quando o mouse passa sobre `.card` */
 }
-
-
 
 .card:hover .texto-secundario {
     display: block;
