@@ -8,6 +8,12 @@ uses
   System.IOUtils, System.Types, Vcl.FileCtrl;
 
 type
+  // Classe para armazenar o caminho real do arquivo
+  TArquivoInfo = class
+    Caminho: string;
+    constructor Create(const ACaminho: string);
+  end;
+
   TF_RenomearArquivo = class(TForm)
     Panel1: TPanel;
     Ed_Caminho: TEdit;
@@ -22,14 +28,11 @@ type
     procedure Bt_CarregarClick(Sender: TObject);
     procedure Bt_LimparClick(Sender: TObject);
     procedure Bt_RenomeaArquivoClick(Sender: TObject);
-
-
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
-
-
   public
-  procedure CarregarArquivos(const Pasta: string);
-
+    procedure CarregarArquivos(const Pasta: string);
+    procedure RenomearArquivos;
   end;
 
 var
@@ -42,103 +45,115 @@ implementation
 uses
   System.StrUtils;
 
+{ TArquivoInfo }
 
+constructor TArquivoInfo.Create(const ACaminho: string);
+begin
+  Caminho := ACaminho;
+end;
 
-
-  // Funçoes
+{ TF_RenomearArquivo }
 
 procedure TF_RenomearArquivo.CarregarArquivos(const Pasta: string);
 const
-   ExtensoesSuportadas: array[0..6] of string = ('.jpg', '.jpeg', '.png', '.mp4', '.avi', '.mov', '.mkv');
-var
-   Arquivos: TStringDynArray;
-   Arquivo: string;
-   Ext: string;
-begin
-   ListBox1.Items.Clear;
-
-   Arquivos := TDirectory.GetFiles(Pasta, '*.*', TSearchOption.soTopDirectoryOnly);
-   for Arquivo in Arquivos do
-   begin
-      Ext := LowerCase(ExtractFileExt(Arquivo));
-      if MatchText(Ext, ExtensoesSuportadas) then
-         ListBox1.Items.Add(Arquivo);
-   end;
-
-   if ListBox1.Count = 0 then
-      ShowMessage('Nenhum arquivo de imagem ou vídeo encontrado.');
-end;
-
-
-
-   // ======Botoes=====
-
-procedure TF_RenomearArquivo.Bt_CarregarClick(Sender: TObject);
-var
-   Pasta: string;
-begin
-   if SelectDirectory('Selecione a pasta com os arquivos', '', Pasta) then
-   begin
-      Ed_Caminho.Text := Pasta;
-      CarregarArquivos(Pasta);
-   end;
-end;
-
-
-  procedure TF_RenomearArquivo.Bt_LimparClick(Sender: TObject);
-begin
-
-   Ed_Caminho.Text         := '';
-   Ed_NomeArquivo.Text     := '';
-   Ed_NovoNomeArquivo.Text := '';
-
-
-end;
-
-
-
-procedure TF_RenomearArquivo.Bt_RenomeaArquivoClick(Sender: TObject);
+  ExtensoesSuportadas: array[0..6] of string = ('.jpg', '.jpeg', '.png', '.mp4', '.avi', '.mov', '.mkv');
 var
   Arquivos: TStringDynArray;
-  Arquivo, NomeFinal, Extensao: string;
-  Caminho, TextoRemover: string;
+  Arquivo: string;
+  Ext: string;
 begin
-  Caminho := Ed_Caminho.Text;
-  if Caminho = '' then
-  begin
-    ShowMessage('Informe a pasta!');
-    Exit;
-  end;
+  ListBox1.Items.Clear;
 
-  Arquivos := TDirectory.GetFiles(Caminho);
-
+  Arquivos := TDirectory.GetFiles(Pasta, '*.*', TSearchOption.soTopDirectoryOnly);
   for Arquivo in Arquivos do
   begin
-    NomeFinal := TPath.GetFileNameWithoutExtension(Arquivo);
-    Extensao := TPath.GetExtension(Arquivo);
-
-    // Remove texto do começo, meio ou fim (prefixo, sufixo ou intermediário)
-    TextoRemover := Trim(Ed_NomeArquivo.Text);
-    if TextoRemover <> '' then
-      NomeFinal := NomeFinal.Replace(TextoRemover, '', [rfIgnoreCase]);
-
-    TextoRemover := Trim(Ed_NovoNomeArquivo.Text);
-    if TextoRemover <> '' then
-      NomeFinal := NomeFinal.Replace(TextoRemover, '', [rfIgnoreCase]);
-
-    NomeFinal := Trim(NomeFinal); // remove espaços extras
-
-    // Renomeia o arquivo
-    try
-      TFile.Move(Arquivo, TPath.Combine(Caminho, NomeFinal + Extensao));
-    except
-      on E: Exception do
-        ShowMessage('Erro ao renomear: ' + TPath.GetFileName(Arquivo) + sLineBreak + E.Message);
+    Ext := LowerCase(ExtractFileExt(Arquivo));
+    if MatchText(Ext, ExtensoesSuportadas) then
+    begin
+      // Adiciona apenas o nome do arquivo visível, mas guarda o caminho real
+      ListBox1.Items.AddObject(ExtractFileName(Arquivo), TArquivoInfo.Create(Arquivo));
     end;
   end;
 
-  ShowMessage('Arquivos processados!');
+  if ListBox1.Count = 0 then
+    ShowMessage('Nenhum arquivo de imagem ou vídeo encontrado.');
 end;
 
+procedure TF_RenomearArquivo.RenomearArquivos;
+var
+  i: Integer;
+  CaminhoAtual, CaminhoNovo: string;
+  NomeAtual, NovoNome, NomeArquivo: string;
+  Info: TArquivoInfo;
+begin
+  NomeAtual := Trim(Ed_NomeArquivo.Text);
+  NovoNome := Trim(Ed_NovoNomeArquivo.Text);
+
+  if NomeAtual = '' then
+  begin
+    ShowMessage('Informe o nome ou parte do nome a ser renomeado.');
+    Exit;
+  end;
+
+  for i := 0 to ListBox1.Items.Count - 1 do
+  begin
+    Info := TArquivoInfo(ListBox1.Items.Objects[i]);
+    CaminhoAtual := Info.Caminho;
+    NomeArquivo := ExtractFileName(CaminhoAtual);
+
+    if Pos(NomeAtual, NomeArquivo) > 0 then
+    begin
+      CaminhoNovo := TPath.Combine(Ed_Caminho.Text,
+        StringReplace(NomeArquivo, NomeAtual, NovoNome, [rfReplaceAll]));
+
+      try
+        TFile.Move(CaminhoAtual, CaminhoNovo); // Renomeia o arquivo
+        Info.Caminho := CaminhoNovo;           // atualiza o caminho real
+
+        // Atualiza a ListBox com NomeAntigo ---> NovoNome
+        ListBox1.Items[i] := NomeArquivo + ' ---> ' + ExtractFileName(CaminhoNovo);
+      except
+        on E: Exception do
+          ShowMessage('Erro ao renomear: ' + CaminhoAtual + sLineBreak + E.Message);
+      end;
+    end;
+  end;
+
+  ShowMessage('Renomeação concluída!');
+end;
+
+procedure TF_RenomearArquivo.Bt_CarregarClick(Sender: TObject);
+var
+  Pasta: string;
+begin
+  if SelectDirectory('Selecione a pasta com os arquivos', '', Pasta) then
+  begin
+    Ed_Caminho.Text := Pasta;
+    CarregarArquivos(Pasta);
+  end;
+end;
+
+procedure TF_RenomearArquivo.Bt_LimparClick(Sender: TObject);
+begin
+  Ed_Caminho.Text := '';
+  Ed_NomeArquivo.Text := '';
+  Ed_NovoNomeArquivo.Text := '';
+  ListBox1.Items.Clear;
+end;
+
+procedure TF_RenomearArquivo.Bt_RenomeaArquivoClick(Sender: TObject);
+begin
+  RenomearArquivos;
+end;
+
+procedure TF_RenomearArquivo.FormClose(Sender: TObject; var Action: TCloseAction);
+var
+  i: Integer;
+begin
+  // Libera os objetos TArquivoInfo
+  for i := 0 to ListBox1.Items.Count - 1 do
+    ListBox1.Items.Objects[i].Free;
+end;
 
 end.
+

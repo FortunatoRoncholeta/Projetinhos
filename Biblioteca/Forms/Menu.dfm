@@ -11,6 +11,7 @@ object F_Menu: TF_Menu
   Font.Name = 'Segoe UI'
   Font.Style = []
   Menu = MainMenu1
+  Position = poMainFormCenter
   PixelsPerInch = 96
   TextHeight = 15
   object MainMenu1: TMainMenu
