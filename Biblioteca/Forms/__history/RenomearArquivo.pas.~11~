@@ -29,15 +29,10 @@ type
     procedure Bt_LimparClick(Sender: TObject);
     procedure Bt_RenomeaArquivoClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure FormCreate(Sender: TObject);
-    procedure Bt_DesfazerClick(Sender: TObject);
   private
-
   public
-    UltimosAntigos, UltimosNovos: TStringList;
     procedure CarregarArquivos(const Pasta: string);
     procedure RenomearArquivos;
-    procedure DesfazerRenomeacao;
   end;
 
 var
@@ -100,10 +95,6 @@ begin
     Exit;
   end;
 
-  // Limpa histórico anterior
-  UltimosAntigos.Clear;
-  UltimosNovos.Clear;
-
   for i := 0 to ListBox1.Items.Count - 1 do
   begin
     Info := TArquivoInfo(ListBox1.Items.Objects[i]);
@@ -116,16 +107,11 @@ begin
         StringReplace(NomeArquivo, NomeAtual, NovoNome, [rfReplaceAll]));
 
       try
-        TFile.Move(CaminhoAtual, CaminhoNovo);
+        TFile.Move(CaminhoAtual, CaminhoNovo); // Renomeia o arquivo
+        Info.Caminho := CaminhoNovo;           // atualiza o caminho real
 
-        // Salva para desfazer
-        UltimosAntigos.Add(CaminhoAtual);
-        UltimosNovos.Add(CaminhoNovo);
-
-        // Atualiza o objeto e a ListBox
-        Info.Caminho := CaminhoNovo;
+        // Atualiza a ListBox com NomeAntigo ---> NovoNome
         ListBox1.Items[i] := NomeArquivo + ' ---> ' + ExtractFileName(CaminhoNovo);
-
       except
         on E: Exception do
           ShowMessage('Erro ao renomear: ' + CaminhoAtual + sLineBreak + E.Message);
@@ -136,44 +122,6 @@ begin
   ShowMessage('Renomeação concluída!');
 end;
 
-
-procedure TF_RenomearArquivo.DesfazerRenomeacao;
-var
-  i: Integer;
-  Info: TArquivoInfo;
-begin
-  if UltimosAntigos.Count = 0 then
-  begin
-    ShowMessage('Não há renomeação para desfazer.');
-    Exit;
-  end;
-
-  for i := 0 to UltimosAntigos.Count - 1 do
-  begin
-    if FileExists(UltimosNovos[i]) then
-    begin
-      try
-        TFile.Move(UltimosNovos[i], UltimosAntigos[i]);
-
-        // Atualiza ListBox e objeto
-        Info := TArquivoInfo(ListBox1.Items.Objects[i]);
-        Info.Caminho := UltimosAntigos[i];
-        ListBox1.Items[i] := ExtractFileName(UltimosAntigos[i]);
-
-      except
-        on E: Exception do
-          ShowMessage('Erro ao desfazer: ' + UltimosNovos[i] + sLineBreak + E.Message);
-      end;
-    end;
-  end;
-
-  UltimosAntigos.Clear;
-  UltimosNovos.Clear;
-
-  ShowMessage('Última renomeação desfeita!');
-end;
-
-
 procedure TF_RenomearArquivo.Bt_CarregarClick(Sender: TObject);
 var
   Pasta: string;
@@ -183,12 +131,6 @@ begin
     Ed_Caminho.Text := Pasta;
     CarregarArquivos(Pasta);
   end;
-end;
-
-procedure TF_RenomearArquivo.Bt_DesfazerClick(Sender: TObject);
-begin
-   DesfazerRenomeacao;
-
 end;
 
 procedure TF_RenomearArquivo.Bt_LimparClick(Sender: TObject);
@@ -208,20 +150,9 @@ procedure TF_RenomearArquivo.FormClose(Sender: TObject; var Action: TCloseAction
 var
   i: Integer;
 begin
-  // Libera os objetos TArquivoInfo do ListBox
+  // Libera os objetos TArquivoInfo
   for i := 0 to ListBox1.Items.Count - 1 do
     ListBox1.Items.Objects[i].Free;
-
-  // Libera as listas usadas para desfazer
-  UltimosAntigos.Free;
-  UltimosNovos.Free;
-end;
-
-procedure TF_RenomearArquivo.FormCreate(Sender: TObject);
-begin
-  UltimosAntigos := TStringList.Create;
-  UltimosNovos := TStringList.Create;
-
 end;
 
 end.

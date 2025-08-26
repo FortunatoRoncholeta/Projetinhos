@@ -12,6 +12,7 @@ object F_RenomearArquivo: TF_RenomearArquivo
   Font.Style = []
   Position = poMainFormCenter
   OnClose = FormClose
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 15
   object Panel1: TPanel
@@ -34,6 +35,7 @@ object F_RenomearArquivo: TF_RenomearArquivo
       Width = 97
       Height = 34
       Caption = 'Desfazer'
+      OnClick = Bt_DesfazerClick
     end
     object Bt_Limpar: TSpeedButton
       Left = 121
