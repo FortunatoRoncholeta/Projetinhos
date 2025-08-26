@@ -1,0 +1,16 @@
+program Biblioteca;
+
+uses
+  Vcl.Forms,
+  Menu in 'Forms\Menu.pas' {F_Menu},
+  DM_DADOS in 'Data\DM_DADOS.pas' {DataModule1: TDataModule};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TF_Menu, F_Menu);
+  Application.CreateForm(TDataModule1, DataModule1);
+  Application.Run;
+end.

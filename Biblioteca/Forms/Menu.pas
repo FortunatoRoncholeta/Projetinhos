@@ -1,0 +1,49 @@
+unit Menu;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus;
+
+type
+  TF_Menu = class(TForm)
+    MainMenu1: TMainMenu;
+    Ferramentas: TMenuItem;
+    Renomear: TMenuItem;
+    procedure RenomearClick(Sender: TObject);
+
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  F_Menu: TF_Menu;
+
+implementation
+
+uses
+RenomearArquivo;
+
+
+
+{$R *.dfm}
+
+
+
+procedure TF_Menu.RenomearClick(Sender: TObject);
+var
+  form: TF_RenomearArquivo;
+begin
+  form := TF_RenomearArquivo.Create(Self);
+  try
+    form.ShowModal;
+  finally
+    form.Free;
+  end;
+end;
+
+end.

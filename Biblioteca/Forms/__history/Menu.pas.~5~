@@ -1,0 +1,34 @@
+unit Menu;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus;
+
+type
+  TF_Menu = class(TForm)
+    MainMenu1: TMainMenu;
+    Ferramentas: TMenuItem;
+    Renomear: TMenuItem;
+
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  F_Menu: TF_Menu;
+
+implementation
+
+
+
+
+{$R *.dfm}
+
+
+
+end.

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2025/08/25 19:12:17.000.268,=C:\Users\user\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2025/08/25 19:14:02.000.343,C:\Users\user\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\user\Desktop\Biblioteca\Forms\Menu.dfm</Transaction>
+    <Transaction>2025/08/25 19:14:02.000.343,C:\Users\user\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\user\Desktop\Biblioteca\Forms\Menu.pas</Transaction>
+    <Transaction>2025/08/25 19:14:43.000.391,C:\Users\user\Documents\Embarcadero\Studio\Projects\Project2.dproj=C:\Users\user\Desktop\Biblioteca\Biblioteca.dproj</Transaction>
+    <Transaction>2025/08/25 19:16:18.000.252,=C:\Users\user\Desktop\Biblioteca\Unit1.pas</Transaction>
+    <Transaction>2025/08/25 19:16:48.000.610,C:\Users\user\Desktop\Biblioteca\Unit1.pas=C:\Users\user\Desktop\Biblioteca\Data\DM_DADOS.pas</Transaction>
+    <Transaction>2025/08/25 19:16:48.000.610,C:\Users\user\Desktop\Biblioteca\Unit1.dfm=C:\Users\user\Desktop\Biblioteca\Data\DM_DADOS.dfm</Transaction>
+    <Transaction>2025/08/25 19:27:06.000.281,=C:\Users\user\Desktop\Biblioteca\Forms\RenomeiaArquivo.pas</Transaction>
+    <Transaction>2025/08/25 19:48:10.000.786,=C:\Users\user\Desktop\Biblioteca\Forms\RenomearArquivo.pas</Transaction>
+  </Transactions>
+</BorlandProject>
