@@ -1,0 +1,251 @@
+﻿unit RenomearArquivo;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls,
+  System.IOUtils, System.Types, Vcl.FileCtrl;
+
+type
+  // Classe para armazenar o caminho real do arquivo
+  TArquivoInfo = class
+    Caminho: string;
+    constructor Create(const ACaminho: string);
+  end;
+
+  TF_RenomearArquivo = class(TForm)
+    Panel1: TPanel;
+    Ed_Caminho: TEdit;
+    Bt_RenomeaArquivo: TSpeedButton;
+    Bt_Desfazer: TSpeedButton;
+    Bt_Limpar: TSpeedButton;
+    Ed_NomeArquivo: TEdit;
+    Ed_NovoNomeArquivo: TEdit;
+    ListBox1: TListBox;
+    Bt_Carregar: TSpeedButton;
+    Ch_Regex: TCheckBox;
+    procedure Bt_CarregarClick(Sender: TObject);
+    procedure Bt_LimparClick(Sender: TObject);
+    procedure Bt_RenomeaArquivoClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormCreate(Sender: TObject);
+    procedure Bt_DesfazerClick(Sender: TObject);
+  private
+
+  public
+    UltimosAntigos, UltimosNovos: TStringList;
+    procedure CarregarArquivos(const Pasta: string);
+    procedure RenomearArquivos;
+    procedure DesfazerRenomeacao;
+  end;
+
+var
+  F_RenomearArquivo: TF_RenomearArquivo;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  System.StrUtils,System.RegularExpressions;
+
+{ TArquivoInfo }
+
+constructor TArquivoInfo.Create(const ACaminho: string);
+begin
+  Caminho := ACaminho;
+end;
+
+{=============FUNÇÔES=============}
+//Carrega os arquivos
+
+procedure TF_RenomearArquivo.CarregarArquivos(const Pasta: string);
+const
+  ExtensoesSuportadas: array[0..6] of string = ('.jpg', '.jpeg', '.png', '.mp4', '.avi', '.mov', '.mkv');
+var
+  Arquivos: TStringDynArray;
+  Arquivo: string;
+  Ext: string;
+begin
+  ListBox1.Items.Clear;
+
+  Arquivos := TDirectory.GetFiles(Pasta, '*.*', TSearchOption.soTopDirectoryOnly);
+  for Arquivo in Arquivos do
+  begin
+    Ext := LowerCase(ExtractFileExt(Arquivo));
+    if MatchText(Ext, ExtensoesSuportadas) then
+    begin
+      // Adiciona apenas o nome do arquivo visível, mas guarda o caminho real
+      ListBox1.Items.AddObject(ExtractFileName(Arquivo), TArquivoInfo.Create(Arquivo));
+    end;
+  end;
+
+  if ListBox1.Count = 0 then
+    ShowMessage('Nenhum arquivo de imagem ou vídeo encontrado.');
+end;
+
+// Renomeia os Arquivos
+procedure TF_RenomearArquivo.RenomearArquivos;
+var
+  i: Integer;
+  CaminhoAtual, CaminhoNovo: string;
+  NomeAtual, NovoNome, NomeArquivo, NomeNovoArquivo: string;
+  Info: TArquivoInfo;
+begin
+  NomeAtual := Trim(Ed_NomeArquivo.Text);
+  NovoNome := Trim(Ed_NovoNomeArquivo.Text);
+
+  if NomeAtual = '' then
+  begin
+    ShowMessage('Informe o texto (ou regex) a ser usado.');
+    Exit;
+  end;
+
+  // Limpa histórico anterior
+  UltimosAntigos.Clear;
+  UltimosNovos.Clear;
+
+  for i := 0 to ListBox1.Items.Count - 1 do
+  begin
+    Info := TArquivoInfo(ListBox1.Items.Objects[i]);
+    CaminhoAtual := Info.Caminho;
+    NomeArquivo := ExtractFileName(CaminhoAtual);
+
+    try
+      if Ch_Regex.Checked then
+      begin
+        // Usa regex
+        NomeNovoArquivo := TRegEx.Replace(NomeArquivo, NomeAtual, NovoNome);
+      end
+      else
+      begin
+        // Usa busca normal
+        if Pos(NomeAtual, NomeArquivo) = 0 then
+          Continue;
+        NomeNovoArquivo := StringReplace(NomeArquivo, NomeAtual, NovoNome, [rfReplaceAll]);
+      end;
+
+      CaminhoNovo := TPath.Combine(Ed_Caminho.Text, NomeNovoArquivo);
+
+      TFile.Move(CaminhoAtual, CaminhoNovo);
+
+      // Salva para desfazer
+      UltimosAntigos.Add(CaminhoAtual);
+      UltimosNovos.Add(CaminhoNovo);
+
+      // Atualiza o objeto e a ListBox
+      Info.Caminho := CaminhoNovo;
+      ListBox1.Items[i] := NomeArquivo + ' ---> ' + NomeNovoArquivo;
+
+    except
+      on E: Exception do
+        ShowMessage('Erro ao renomear: ' + CaminhoAtual + sLineBreak + E.Message);
+    end;
+  end;
+
+  ShowMessage('Renomeação concluída!');
+end;
+
+
+// Desfaz a ultima Renomeação
+
+procedure TF_RenomearArquivo.DesfazerRenomeacao;
+var
+  i: Integer;
+  Info: TArquivoInfo;
+begin
+  if UltimosAntigos.Count = 0 then
+  begin
+    ShowMessage('Não há renomeação para desfazer.');
+    Exit;
+  end;
+
+  for i := 0 to UltimosAntigos.Count - 1 do
+  begin
+    if FileExists(UltimosNovos[i]) then
+    begin
+      try
+        TFile.Move(UltimosNovos[i], UltimosAntigos[i]);
+
+        // Atualiza ListBox e objeto
+        Info := TArquivoInfo(ListBox1.Items.Objects[i]);
+        Info.Caminho := UltimosAntigos[i];
+        ListBox1.Items[i] := ExtractFileName(UltimosAntigos[i]);
+
+      except
+        on E: Exception do
+          ShowMessage('Erro ao desfazer: ' + UltimosNovos[i] + sLineBreak + E.Message);
+      end;
+    end;
+  end;
+
+  UltimosAntigos.Clear;
+  UltimosNovos.Clear;
+
+  ShowMessage('Última renomeação desfeita!');
+end;
+
+  {=============Botoes=============}
+
+
+procedure TF_RenomearArquivo.Bt_CarregarClick(Sender: TObject);
+var
+  Pasta: string;
+begin
+  // Se já existe uma pasta no Edit, usa ela como inicial
+  if DirectoryExists(Ed_Caminho.Text) then
+    Pasta := Ed_Caminho.Text
+  else
+    Pasta := '';
+
+  // Abre o seletor já no último caminho
+  if SelectDirectory('Selecione a pasta com os arquivos', '', Pasta) then
+  begin
+    Ed_Caminho.Text := Pasta;
+    CarregarArquivos(Pasta);
+  end;
+end;
+
+procedure TF_RenomearArquivo.Bt_DesfazerClick(Sender: TObject);
+begin
+   DesfazerRenomeacao;
+end;
+
+procedure TF_RenomearArquivo.Bt_LimparClick(Sender: TObject);
+begin
+  Ed_Caminho.Text := '';
+  Ed_NomeArquivo.Text := '';
+  Ed_NovoNomeArquivo.Text := '';
+  ListBox1.Items.Clear;
+end;
+
+procedure TF_RenomearArquivo.Bt_RenomeaArquivoClick(Sender: TObject);
+begin
+  RenomearArquivos;
+end;
+
+{=============Formulario=============}
+
+procedure TF_RenomearArquivo.FormClose(Sender: TObject; var Action: TCloseAction);
+var
+  i: Integer;
+begin
+  // Libera os objetos TArquivoInfo do ListBox
+  for i := 0 to ListBox1.Items.Count - 1 do
+    ListBox1.Items.Objects[i].Free;
+
+  // Libera as listas usadas para desfazer
+  UltimosAntigos.Free;
+  UltimosNovos.Free;
+end;
+
+procedure TF_RenomearArquivo.FormCreate(Sender: TObject);
+begin
+  UltimosAntigos := TStringList.Create;
+  UltimosNovos := TStringList.Create;
+
+end;
+
+end.
+

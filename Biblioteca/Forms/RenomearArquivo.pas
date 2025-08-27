@@ -17,7 +17,6 @@ type
   TF_RenomearArquivo = class(TForm)
     Panel1: TPanel;
     Ed_Caminho: TEdit;
-    Cbo_Tipo: TComboBox;
     Bt_RenomeaArquivo: TSpeedButton;
     Bt_Desfazer: TSpeedButton;
     Bt_Limpar: TSpeedButton;
@@ -25,12 +24,16 @@ type
     Ed_NovoNomeArquivo: TEdit;
     ListBox1: TListBox;
     Bt_Carregar: TSpeedButton;
+    Ch_Regex: TCheckBox;
+    GP_Regex: TGroupBox;
+    MemoDicas: TMemo;
     procedure Bt_CarregarClick(Sender: TObject);
     procedure Bt_LimparClick(Sender: TObject);
     procedure Bt_RenomeaArquivoClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure Bt_DesfazerClick(Sender: TObject);
+    procedure Ch_RegexClick(Sender: TObject);
   private
 
   public
@@ -48,7 +51,7 @@ implementation
 {$R *.dfm}
 
 uses
-  System.StrUtils;
+  System.StrUtils,System.RegularExpressions;
 
 { TArquivoInfo }
 
@@ -57,11 +60,12 @@ begin
   Caminho := ACaminho;
 end;
 
-{ TF_RenomearArquivo }
+{=============FUNÇÔES=============}
+//Carrega os arquivos
 
 procedure TF_RenomearArquivo.CarregarArquivos(const Pasta: string);
 const
-  ExtensoesSuportadas: array[0..6] of string = ('.jpg', '.jpeg', '.png', '.mp4', '.avi', '.mov', '.mkv');
+  ExtensoesSuportadas: array[0..7] of string = ('.jpg', '.jpeg', '.png', '.mp4', '.avi', '.mov', '.srt', '.mkv');
 var
   Arquivos: TStringDynArray;
   Arquivo: string;
@@ -84,11 +88,17 @@ begin
     ShowMessage('Nenhum arquivo de imagem ou vídeo encontrado.');
 end;
 
+procedure TF_RenomearArquivo.Ch_RegexClick(Sender: TObject);
+begin
+  GP_Regex.Visible := Ch_Regex.Checked;
+end;
+
+// Renomeia os Arquivos
 procedure TF_RenomearArquivo.RenomearArquivos;
 var
   i: Integer;
   CaminhoAtual, CaminhoNovo: string;
-  NomeAtual, NovoNome, NomeArquivo: string;
+  NomeAtual, NovoNome, NomeArquivo, NomeNovoArquivo: string;
   Info: TArquivoInfo;
 begin
   NomeAtual := Trim(Ed_NomeArquivo.Text);
@@ -96,7 +106,7 @@ begin
 
   if NomeAtual = '' then
   begin
-    ShowMessage('Informe o nome ou parte do nome a ser renomeado.');
+    ShowMessage('Informe o texto (ou regex) a ser usado.');
     Exit;
   end;
 
@@ -110,32 +120,48 @@ begin
     CaminhoAtual := Info.Caminho;
     NomeArquivo := ExtractFileName(CaminhoAtual);
 
-    if Pos(NomeAtual, NomeArquivo) > 0 then
-    begin
-      CaminhoNovo := TPath.Combine(Ed_Caminho.Text,
-        StringReplace(NomeArquivo, NomeAtual, NovoNome, [rfReplaceAll]));
-
-      try
-        TFile.Move(CaminhoAtual, CaminhoNovo);
-
-        // Salva para desfazer
-        UltimosAntigos.Add(CaminhoAtual);
-        UltimosNovos.Add(CaminhoNovo);
-
-        // Atualiza o objeto e a ListBox
-        Info.Caminho := CaminhoNovo;
-        ListBox1.Items[i] := NomeArquivo + ' ---> ' + ExtractFileName(CaminhoNovo);
-
-      except
-        on E: Exception do
-          ShowMessage('Erro ao renomear: ' + CaminhoAtual + sLineBreak + E.Message);
+    try
+      if Ch_Regex.Checked then
+      begin
+        try
+          // Usa regex; se não houver correspondência, retorna o próprio nome
+          NomeNovoArquivo := TRegEx.Replace(NomeArquivo, NomeAtual, NovoNome);
+        except
+          // Regex inválido ou erro, ignora este arquivo
+          Continue;
+        end;
+      end
+      else
+      begin
+        // Busca normal
+        if Pos(NomeAtual, NomeArquivo) = 0 then
+          Continue;
+        NomeNovoArquivo := StringReplace(NomeArquivo, NomeAtual, NovoNome, [rfReplaceAll]);
       end;
+
+      CaminhoNovo := TPath.Combine(Ed_Caminho.Text, NomeNovoArquivo);
+
+      TFile.Move(CaminhoAtual, CaminhoNovo);
+
+      // Salva para desfazer
+      UltimosAntigos.Add(CaminhoAtual);
+      UltimosNovos.Add(CaminhoNovo);
+
+      // Atualiza o objeto e a ListBox
+      Info.Caminho := CaminhoNovo;
+      ListBox1.Items[i] := NomeArquivo + ' ---> ' + NomeNovoArquivo;
+
+    except
+      on E: Exception do
+        ShowMessage('Erro ao renomear: ' + CaminhoAtual + sLineBreak + E.Message);
     end;
   end;
 
   ShowMessage('Renomeação concluída!');
 end;
 
+
+// Desfaz a ultima Renomeação
 
 procedure TF_RenomearArquivo.DesfazerRenomeacao;
 var
@@ -173,11 +199,20 @@ begin
   ShowMessage('Última renomeação desfeita!');
 end;
 
+  {=============Botoes=============}
+
 
 procedure TF_RenomearArquivo.Bt_CarregarClick(Sender: TObject);
 var
   Pasta: string;
 begin
+  // Se já existe uma pasta no Edit, usa ela como inicial
+  if DirectoryExists(Ed_Caminho.Text) then
+    Pasta := Ed_Caminho.Text
+  else
+    Pasta := '';
+
+  // Abre o seletor já no último caminho
   if SelectDirectory('Selecione a pasta com os arquivos', '', Pasta) then
   begin
     Ed_Caminho.Text := Pasta;
@@ -188,7 +223,6 @@ end;
 procedure TF_RenomearArquivo.Bt_DesfazerClick(Sender: TObject);
 begin
    DesfazerRenomeacao;
-
 end;
 
 procedure TF_RenomearArquivo.Bt_LimparClick(Sender: TObject);
@@ -203,6 +237,8 @@ procedure TF_RenomearArquivo.Bt_RenomeaArquivoClick(Sender: TObject);
 begin
   RenomearArquivos;
 end;
+
+{=============Formulario=============}
 
 procedure TF_RenomearArquivo.FormClose(Sender: TObject; var Action: TCloseAction);
 var
@@ -221,6 +257,15 @@ procedure TF_RenomearArquivo.FormCreate(Sender: TObject);
 begin
   UltimosAntigos := TStringList.Create;
   UltimosNovos := TStringList.Create;
+
+
+  MemoDicas.Lines.Clear;
+  MemoDicas.Lines.Add('[.*?]         →   Remove tudo que está entre colchetes');
+  MemoDicas.Lines.Add('\d+           →   Remove números');
+  MemoDicas.Lines.Add('\s+           →   Remove espaços extras');
+  MemoDicas.Lines.Add('[^a-zA-Z0-9]  →   Remove caracteres especiais');
+  MemoDicas.Lines.Add('^prefixo      →   Remove prefixo');
+  MemoDicas.Lines.Add('sufixo$       →   Remove sufixo');
 
 end;
 

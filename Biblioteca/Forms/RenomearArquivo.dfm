@@ -22,23 +22,23 @@ object F_RenomearArquivo: TF_RenomearArquivo
     Height = 601
     TabOrder = 0
     object Bt_RenomeaArquivo: TSpeedButton
-      Left = 654
-      Top = 78
+      Left = 574
+      Top = 49
       Width = 97
       Height = 34
       Caption = 'Renomear'
       OnClick = Bt_RenomeaArquivoClick
     end
     object Bt_Desfazer: TSpeedButton
-      Left = 654
-      Top = 118
+      Left = 574
+      Top = 89
       Width = 97
       Height = 34
       Caption = 'Desfazer'
       OnClick = Bt_DesfazerClick
     end
     object Bt_Limpar: TSpeedButton
-      Left = 121
+      Left = 41
       Top = 87
       Width = 97
       Height = 34
@@ -46,7 +46,7 @@ object F_RenomearArquivo: TF_RenomearArquivo
       OnClick = Bt_LimparClick
     end
     object Bt_Carregar: TSpeedButton
-      Left = 121
+      Left = 41
       Top = 47
       Width = 97
       Height = 34
@@ -54,7 +54,7 @@ object F_RenomearArquivo: TF_RenomearArquivo
       OnClick = Bt_CarregarClick
     end
     object Ed_Caminho: TEdit
-      Left = 224
+      Left = 144
       Top = 49
       Width = 424
       Height = 23
@@ -62,37 +62,58 @@ object F_RenomearArquivo: TF_RenomearArquivo
       TabOrder = 0
       Text = 'Caminho'
     end
-    object Cbo_Tipo: TComboBox
-      Left = 654
-      Top = 49
-      Width = 97
-      Height = 23
-      TabOrder = 1
-      Text = 'Cbo_Tipo'
-    end
     object Ed_NomeArquivo: TEdit
-      Left = 224
+      Left = 144
       Top = 80
       Width = 273
       Height = 23
-      TabOrder = 2
-      Text = 'Nome do Arquivo'
+      TabOrder = 1
+      Text = 'Nome a ser alterado'
     end
     object Ed_NovoNomeArquivo: TEdit
-      Left = 224
+      Left = 144
       Top = 111
       Width = 273
       Height = 23
-      TabOrder = 3
-      Text = 'Novo Nome do Arquivo'
+      TabOrder = 2
+      Text = 'Novo Nome'
     end
     object ListBox1: TListBox
-      Left = 8
-      Top = 183
+      Left = 5
+      Top = 216
       Width = 1001
-      Height = 402
+      Height = 369
       ItemHeight = 15
+      TabOrder = 3
+    end
+    object Ch_Regex: TCheckBox
+      Left = 448
+      Top = 83
+      Width = 97
+      Height = 17
+      Caption = 'Regex'
       TabOrder = 4
+      OnClick = Ch_RegexClick
+    end
+    object GP_Regex: TGroupBox
+      Left = 696
+      Top = 29
+      Width = 313
+      Height = 181
+      Caption = 'Dicas de Regex'
+      TabOrder = 5
+      Visible = False
+      object MemoDicas: TMemo
+        Left = 5
+        Top = 20
+        Width = 305
+        Height = 158
+        Enabled = False
+        Lines.Strings = (
+          'M_Dicas')
+        ReadOnly = True
+        TabOrder = 0
+      end
     end
   end
 end
